@@ -1,5 +1,17 @@
 server:
-  port: 8085
+
+  port: ${PORT:${SERVERS_PORT:0}}
+
+spring:
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ms_auth
+    username: root
+    password:
 
 eureka:
   client:
@@ -9,15 +21,5 @@ eureka:
   instance:
     #hostname: localhost
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-spring:
-  cloud:
-    gateway:
-
-      discovery:
-        locator:
-          enable: true
-      routes:
-        - id: ms-catalogo-service
-          uri: lb://ms-catalogo-service
-          predicates:
-            - Path=/categorias/**
+jwt:
+  secret: secret

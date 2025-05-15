@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CatalogoFeign {
     @GetMapping("/{id}")
     @CircuitBreaker(name = "categoriaListarPorIdCB", fallbackMethod = "fallbackCategoriaListarPorId")
-
     public ResponseEntity<CategoriaDto> buscarCategoria(@PathVariable Integer id);
     default ResponseEntity<CategoriaDto> fallbackCategoriaListarPorId(Integer id, Exception e) {
         CategoriaDto categoriaDto = new CategoriaDto();
