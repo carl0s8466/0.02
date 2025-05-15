@@ -15,7 +15,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/noetipo/DAD-2025-G2.git # ruta del repositorio git
+          uri: https://github.com/carl0s8466/0.02 # ruta del repositorio git
           searchPaths: config-data
           default-label: main
   security:
